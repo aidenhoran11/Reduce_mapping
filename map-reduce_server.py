@@ -40,8 +40,6 @@ class MapReduceService (services.DriverServicer):
     def _next_map_task(self):
         # determine the next map task to provide to the next available driver
         group_id = self._task_num
-        
-
         # if the last map task has started but not finished set state to idle
         if self._task_num == self._n and self._finished_tasks < self._n:
             self._state = "idle"
@@ -115,20 +113,17 @@ def serve(service: MapReduceService):
     server.stop(0)
 
 def get_args():
-    #update this fucntion
-    parser = argparse.ArgumentParser(description='Starts the driver.')
-    parser.add_argument('-N', dest='N', type=int,
-                        required=True, help='Number of Map tasks')
-    parser.add_argument('-M', dest='M', type=int,
-                        required=True, help='Number of Reduce tasks')
+    # get arguments from the user when the file is run
+    parser = argparse.ArgumentParser(description='Starts the server.')
+    parser.add_argument('-n', dest='n', type=int,
+                        required=True, help='Number of Mapping tasks')
+    parser.add_argument('-m', dest='m', type=int,
+                        required=True, help='Number of Reduction tasks')
     args = parser.parse_args()
-    return args.N, args.M
+    return args.n, args.m
 
 if __name__ == '__main__':
     logging.basicConfig()
     n,m = get_args()
     service = MapReduceService(n,m)
     serve(service)
-
-            
-        
