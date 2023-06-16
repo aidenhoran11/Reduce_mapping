@@ -24,9 +24,3 @@ class req(_message.Message):
     TEXT_FIELD_NUMBER: _ClassVar[int]
     text: str
     def __init__(self, text: _Optional[str] = ...) -> None: ...
-
-class word_count(_message.Message):
-    __slots__ = ["text"]
-    TEXT_FIELD_NUMBER: _ClassVar[int]
-    text: str
-    def __init__(self, text: _Optional[str] = ...) -> None: ...
