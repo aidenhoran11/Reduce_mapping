@@ -1,0 +1,47 @@
+// Proto file for map and reduce program. 
+// Task is as follows
+// Create a distributed map-reduce program to solve the word count problem on
+// your local machine. The server-client communication should use either gRPC
+// or a REST API, whatever you prefer. The problem input is a set of text files,
+// and you want to produce a count indicating how many times each word occurs
+// in the whole dataset. You can use any programming language of your choice,
+// but please use only standard / built-in libraries (and gRPC, if you choose that
+// option).
+syntax = "proto3";
+package driver;
+
+message req {
+    // request message to be added to list of known workers
+    string text = 1;
+}
+
+message Details {
+    // details of the task given to the worker
+    string task = 1;
+    int32 workerId = 2;
+    int32 reduceNum = 3;
+    repeated string files = 4;
+    string path = 5;
+}
+
+message word_count {
+    string text = 1;
+}
+
+
+
+service Driver{
+    // a service that will send files to workers have them map the words or reduce the files
+
+
+    // determines how many times each word is said in a file
+    rpc requestTask (req) returns (Details) {}
+
+    // Send the map result to the server
+    rpc mapResult (Details) returns (Details) {}
+
+    // send the reduce result to the server
+    rpc reduceResult (Details) returns (Details) {}
+}
+
+
