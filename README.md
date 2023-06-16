@@ -2,7 +2,7 @@
 This is my code to complete the reduce mapping problem using gRPC. The code was built to be run on a windows machine sorry to linux users.
 The template specifications for the problem that was completed can be found in the file map-reduce-task.pdf
 
-The map-reduce.proto file is the basis for the function calls between the server and clients, and was used for the generation of the files map-reduce_pb2.py and map_reduce_pb2_grpc.py. These files are generated using the following command "py -m grpc_tools.protoc -I../grpc --python_out=. --pyi_out=. --grpc_python_out=. map-reduce.proto"
+The map-reduce.proto file is the basis for the function calls between the server and clients, and was used for the generation of the files map-reduce_pb2.py, map-reduce_pb2.pyi and map_reduce_pb2_grpc.py. These files are generated using the following command "py -m grpc_tools.protoc -I../grpc --python_out=. --pyi_out=. --grpc_python_out=. map-reduce.proto"
 
 The map-reduce_server.py file holds the code for the launching the server and the server class which handles the calls from the clients and distributes the mapping and reduction tasks. The server is started by calling "py .\map-reduce_server.py -n* -m*" in the terminal. The "*" symbols after the "-n" and the "-m" are for the number of mapping tasks and reduction tasks to be completed respectively.
 
