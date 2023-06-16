@@ -22,13 +22,13 @@ class DriverStub(object):
                 )
         self.mapResult = channel.unary_unary(
                 '/driver.Driver/mapResult',
-                request_serializer=map__reduce__pb2.Details.SerializeToString,
-                response_deserializer=map__reduce__pb2.Details.FromString,
+                request_serializer=map__reduce__pb2.req.SerializeToString,
+                response_deserializer=map__reduce__pb2.req.FromString,
                 )
         self.reduceResult = channel.unary_unary(
                 '/driver.Driver/reduceResult',
-                request_serializer=map__reduce__pb2.Details.SerializeToString,
-                response_deserializer=map__reduce__pb2.Details.FromString,
+                request_serializer=map__reduce__pb2.req.SerializeToString,
+                response_deserializer=map__reduce__pb2.req.FromString,
                 )
 
 
@@ -67,13 +67,13 @@ def add_DriverServicer_to_server(servicer, server):
             ),
             'mapResult': grpc.unary_unary_rpc_method_handler(
                     servicer.mapResult,
-                    request_deserializer=map__reduce__pb2.Details.FromString,
-                    response_serializer=map__reduce__pb2.Details.SerializeToString,
+                    request_deserializer=map__reduce__pb2.req.FromString,
+                    response_serializer=map__reduce__pb2.req.SerializeToString,
             ),
             'reduceResult': grpc.unary_unary_rpc_method_handler(
                     servicer.reduceResult,
-                    request_deserializer=map__reduce__pb2.Details.FromString,
-                    response_serializer=map__reduce__pb2.Details.SerializeToString,
+                    request_deserializer=map__reduce__pb2.req.FromString,
+                    response_serializer=map__reduce__pb2.req.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -115,8 +115,8 @@ class Driver(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/driver.Driver/mapResult',
-            map__reduce__pb2.Details.SerializeToString,
-            map__reduce__pb2.Details.FromString,
+            map__reduce__pb2.req.SerializeToString,
+            map__reduce__pb2.req.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -132,7 +132,7 @@ class Driver(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/driver.Driver/reduceResult',
-            map__reduce__pb2.Details.SerializeToString,
-            map__reduce__pb2.Details.FromString,
+            map__reduce__pb2.req.SerializeToString,
+            map__reduce__pb2.req.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
