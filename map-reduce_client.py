@@ -27,7 +27,7 @@ class Client:
         while(True):
             try:
                 response = self._request_task()
-                # print(response.task)
+                # call the appropriate functions based on the task given by the server
                 if response.task == 'map':
                     self._state = clientState["working"]
                     self._map(response.workerId, response.reduceNum, response.files, response.path)
@@ -49,12 +49,9 @@ class Client:
     def _request_task(self):
         # call the request task rpc
         with grpc.insecure_channel(SERVER_ADDR) as channel:
-            # try:
             task_info = DriverStub(channel).requestTask(map_reduce_pb2.req(text="can i please work for money?"))
             return task_info
-            # except grpc._channel._InactiveRpcError:
-            #     self._state = clientState["waiting"]
-            #     time.sleep(5)
+
 
 
     def _map(self, workerId: int, reduceNum: int, files: list[str], path: str):
@@ -114,16 +111,6 @@ class Client:
         print('done with reduction!')
 
 
-def get_args() -> str:
-    # update this
-    parser = argparse.ArgumentParser(description='Starts a worker.')
-    parser.add_argument('--name', dest='name', default='', help='worker name')
-    args = parser.parse_args()
-    return args.name
-
-
 if __name__ == '__main__':
-    client_name = get_args()
-    logging.basicConfig(format=f'%(asctime)s worker_{client_name} %(levelname)s: %(message)s', datefmt='%m/%d/%Y %H:%M:%S', level=logging.INFO)
     client = Client()
     client._run()
