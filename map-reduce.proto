@@ -11,7 +11,7 @@ syntax = "proto3";
 package driver;
 
 message req {
-    // request message to be added to list of known workers
+    // request messages to communicate between clients and the server
     string text = 1;
 }
 
@@ -24,11 +24,6 @@ message Details {
     string path = 5;
 }
 
-message word_count {
-    string text = 1;
-}
-
-
 
 service Driver{
     // a service that will send files to workers have them map the words or reduce the files
@@ -38,10 +33,10 @@ service Driver{
     rpc requestTask (req) returns (Details) {}
 
     // Send the map result to the server
-    rpc mapResult (Details) returns (Details) {}
+    rpc mapResult (req) returns (req) {}
 
     // send the reduce result to the server
-    rpc reduceResult (Details) returns (Details) {}
+    rpc reduceResult (req) returns (req) {}
 }
 
 
