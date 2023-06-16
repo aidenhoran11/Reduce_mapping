@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10map-reduce.proto\x12\x06\x64river\"\x13\n\x03req\x12\x0c\n\x04text\x18\x01 \x01(\t\"Y\n\x07\x44\x65tails\x12\x0c\n\x04task\x18\x01 \x01(\t\x12\x10\n\x08workerId\x18\x02 \x01(\x05\x12\x11\n\treduceNum\x18\x03 \x01(\x05\x12\r\n\x05\x66iles\x18\x04 \x03(\t\x12\x0c\n\x04path\x18\x05 \x01(\t\"\x1a\n\nword_count\x12\x0c\n\x04text\x18\x01 \x01(\t2\x9c\x01\n\x06\x44river\x12-\n\x0brequestTask\x12\x0b.driver.req\x1a\x0f.driver.Details\"\x00\x12/\n\tmapResult\x12\x0f.driver.Details\x1a\x0f.driver.Details\"\x00\x12\x32\n\x0creduceResult\x12\x0f.driver.Details\x1a\x0f.driver.Details\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10map-reduce.proto\x12\x06\x64river\"\x13\n\x03req\x12\x0c\n\x04text\x18\x01 \x01(\t\"Y\n\x07\x44\x65tails\x12\x0c\n\x04task\x18\x01 \x01(\t\x12\x10\n\x08workerId\x18\x02 \x01(\x05\x12\x11\n\treduceNum\x18\x03 \x01(\x05\x12\r\n\x05\x66iles\x18\x04 \x03(\t\x12\x0c\n\x04path\x18\x05 \x01(\t2\x8c\x01\n\x06\x44river\x12-\n\x0brequestTask\x12\x0b.driver.req\x1a\x0f.driver.Details\"\x00\x12\'\n\tmapResult\x12\x0b.driver.req\x1a\x0b.driver.req\"\x00\x12*\n\x0creduceResult\x12\x0b.driver.req\x1a\x0b.driver.req\"\x00\x62\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'map_reduce_pb2', globals())
@@ -24,8 +24,6 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _REQ._serialized_end=47
   _DETAILS._serialized_start=49
   _DETAILS._serialized_end=138
-  _WORD_COUNT._serialized_start=140
-  _WORD_COUNT._serialized_end=166
-  _DRIVER._serialized_start=169
-  _DRIVER._serialized_end=325
+  _DRIVER._serialized_start=141
+  _DRIVER._serialized_end=281
 # @@protoc_insertion_point(module_scope)
